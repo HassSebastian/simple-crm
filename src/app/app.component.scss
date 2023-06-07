@@ -17,26 +17,32 @@
   align-items: center;
 }
 
-mat-toolbar-row, mat-toolbar{
-min-height: 56px;
-height: 56px;
+mat-toolbar-row,
+mat-toolbar {
+  min-height: 56px;
+  height: 56px;
 }
 
-.menu-items{
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    li{
-        padding: 0 16px;
-        height: 48px;
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-        mat-icon{
-            margin-right: 16px;
-        }
-        &:hover{
-            background-color: rgba(0,0,0,.1);
-        }
+.menu-items {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  li {
+    padding: 0 16px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.1);
     }
+  }
+}
+
+mat-icon {
+  margin-right: 16px;
+}
+
+.router-container {
+  padding: 16px 56px;
 }
