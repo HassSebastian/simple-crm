@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.component';
 import { User } from 'src/models/user';
+import { Firestore, collection, collectionData } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-user',
@@ -11,7 +12,10 @@ import { User } from 'src/models/user';
 export class UserComponent {
   user = new User();
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private firestore: Firestore) {
+    const coll = collection(firestore, 'users')
+    
+  }
 
   openDialog() {
     this.dialog.open(

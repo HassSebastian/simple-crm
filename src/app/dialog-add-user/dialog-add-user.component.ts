@@ -8,6 +8,7 @@ import {
   doc,
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dialog-add-user',
@@ -18,20 +19,26 @@ export class DialogAddUserComponent {
   users$: Observable<any>;
   user = new User();
   birthDate: any = Date();
+  loading = false;
+  
+  
 
-  constructor(private firestore: Firestore) {
+  constructor(private firestore: Firestore, public dialogRef: MatDialogRef<DialogAddUserComponent>) {
     const coll = collection(firestore, 'users');
     this.users$ = collectionData(coll);
-    this.users$.subscribe((newUsers) => {
-      console.log('neue User:', newUsers);
-      this.user = newUsers;
-    });
+    // this.users$.subscribe((newUsers) => {
+    //   console.log('neue User:', newUsers);
+    //   this.user = newUsers;
+    // });
   }
 
   saveUser() {
-    this.birthDate > 1 ? (this.user.birthDate = this.birthDate.getTime()) : '';
+    this.user.birthDate = this.birthDate.getTime();
     console.log('curret user: ', this.user);
+    this.loading = true;
     const coll = collection(this.firestore, 'users');
-    setDoc(doc(coll), this.user.toJson);
+    setDoc(doc(coll), this.user.toJson());
+    this.loading = false;
+    this.dialogRef.close();
   }
 }

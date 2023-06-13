@@ -1,4 +1,25 @@
-<button (click)="openDialog()"
+<mat-card>
+  <table class="user-table">
+    <tr>
+      <th>Name</th>
+      <th>E-Mail</th>
+      <th>City</th>
+    </tr>
+    <tr>
+      <td>Peter</td>
+      <td>peter@peter.de</td>
+      <td>Petersburg</td>
+    </tr>
+    <tr>
+      <td>Peter</td>
+      <td>peter@peter.de</td>
+      <td>Petersburg</td>
+    </tr>
+  </table>
+</mat-card>
+
+<button
+  (click)="openDialog()"
   class="add-user-button"
   mat-fab
   color="primary"
