@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.component';
-import { User } from 'src/models/user';
 import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-user',
@@ -10,16 +10,22 @@ import { Firestore, collection, collectionData } from '@angular/fire/firestore';
   styleUrls: ['./user.component.scss'],
 })
 export class UserComponent {
-  user = new User();
+  users$: Observable<any>;
+  loading = false;
+  allUsers:any [] = [];
 
   constructor(public dialog: MatDialog, private firestore: Firestore) {
-    const coll = collection(firestore, 'users')
-    
+    this.loading = true;
+    const coll = collection(firestore, 'users');
+    this.users$ = collectionData(coll, { idField: 'id' });
+    this.users$.subscribe((changes) => {
+      console.log('neue User:', changes);
+      this.allUsers = changes;
+      this.loading = false;
+    });
   }
 
   openDialog() {
-    this.dialog.open(
-      DialogAddUserComponent
-    ); /* hier wird mit 'dialog', aus dem constructor, '.open' die DialogAddUserComponent geladen*/
+    this.dialog.open(DialogAddUserComponent);
   }
 }

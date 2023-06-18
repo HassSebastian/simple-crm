@@ -20,16 +20,17 @@ export class DialogAddUserComponent {
   user = new User();
   birthDate: any = Date();
   loading = false;
+  allUsers:[]=[];
   
   
 
   constructor(private firestore: Firestore, public dialogRef: MatDialogRef<DialogAddUserComponent>) {
     const coll = collection(firestore, 'users');
     this.users$ = collectionData(coll);
-    // this.users$.subscribe((newUsers) => {
-    //   console.log('neue User:', newUsers);
-    //   this.user = newUsers;
-    // });
+    this.users$.subscribe((changes) => {
+      console.log('neue User:', changes);
+      this.allUsers = changes;
+    });
   }
 
   saveUser() {

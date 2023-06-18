@@ -1,22 +1,20 @@
-<mat-card>
-  <table class="user-table">
-    <tr>
-      <th>Name</th>
-      <th>E-Mail</th>
-      <th>City</th>
-    </tr>
-    <tr>
-      <td>Peter</td>
-      <td>peter@peter.de</td>
-      <td>Petersburg</td>
-    </tr>
-    <tr>
-      <td>Peter</td>
-      <td>peter@peter.de</td>
-      <td>Petersburg</td>
-    </tr>
-  </table>
-</mat-card>
+<div>
+  <mat-card>
+    <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+    <table class="user-table">
+      <tr>
+        <th>Name</th>
+        <th>E-Mail</th>
+        <th>City</th>
+      </tr>
+      <tr *ngFor="let user of allUsers" [routerLink]="['/user/' + user.id]">
+        <td>{{ user.firstName }} {{ user.lastName }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.city }}</td>
+      </tr>
+    </table>
+  </mat-card>
+</div>
 
 <button
   (click)="openDialog()"

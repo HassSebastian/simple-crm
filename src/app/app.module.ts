@@ -25,6 +25,7 @@ import { provideDatabase, getDatabase } from '@angular/fire/database';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatCardModule } from '@angular/material/card';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { MatCardModule } from '@angular/material/card';
     DashboardComponent,
     UserComponent,
     DialogAddUserComponent,
+    UserDetailComponent,
   ],
   imports: [
     BrowserModule,
