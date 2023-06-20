@@ -13,22 +13,37 @@
       object-fit: cover;
       border-radius: 100%;
     }
-    span{
+    div {
+      position: absolute;
+      right: 0;
+      top: 0;
+      color: white;
+    }
+    span {
       display: flex;
       flex-direction: column;
       justify-content: center;
       margin-left: 32px;
       color: white;
-      h2{
+      h2 {
         margin-bottom: 0;
       }
-      span{
+      span {
         margin-left: 0;
       }
     }
   }
 }
 
-.user-detail-address-view{
+.user-detail-address-view {
   margin-top: 32px;
+  mat-card-header {
+    display: flex;
+    justify-content: space-between;
+    div {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  }
 }
