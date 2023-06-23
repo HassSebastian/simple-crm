@@ -19,7 +19,7 @@ export class UserComponent {
     const coll = collection(firestore, 'users');
     this.users$ = collectionData(coll, { idField: 'id' });
     this.users$.subscribe((changes) => {
-      console.log('neue User:', changes);
+      console.log('User:', changes);
       this.allUsers = changes;
       this.loading = false;
     });

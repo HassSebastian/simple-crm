@@ -18,7 +18,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class DialogAddUserComponent {
   users$: Observable<any>;
   user = new User();
-  birthDate: any = Date();
+  birthDate: any = Date( );
   loading = false;
   allUsers:[]=[];
   
