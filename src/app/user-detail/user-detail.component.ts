@@ -66,5 +66,6 @@ export class UserDetailComponent {
     dialog.componentInstance.user = new User(this.user.toJson()); //mit componentInstance greift man auf die angesprochene componente zu
     // ein neuer User wird erstellt, mit dem Inhalt, this.user.toJason().
     dialog.componentInstance.userId = this.userId;
+    dialog.componentInstance.birthDate = new Date(this.user.birthDate);
   }
 }

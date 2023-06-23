@@ -20,6 +20,7 @@ export class DialogEditUserComponent {
 
 
   saveUser() {
+    this.user.birthDate = this.birthDate.getTime();
     this.loading = true;
     updateDoc(doc(collection(this.firestore, 'users'), this.userId), this.user.toJson()).then(() => {
       this.loading = false;
